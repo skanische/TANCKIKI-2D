@@ -32,7 +32,7 @@ protected:
 public:
     GameObject();
     GameObject(double x, double y);
-    ~GameObject();
+    virtual ~GameObject();
 
     /*!
      * \brief Рисует игровой объект на экране

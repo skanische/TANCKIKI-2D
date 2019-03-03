@@ -17,6 +17,7 @@ public:
      * \brief Рисует главное меню.
      */
     void drawMainMenu();
+    void checkKeyboard();
 
 };
 

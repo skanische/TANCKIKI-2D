@@ -23,7 +23,9 @@ public:
 
     void addGameObject(GameObject* obj);
     void removeGameObject(GameObject* obj);
+    /// \todo Доступ к объектам (геттер игрового объекта)
     const sf::RenderWindow &getMainWindow() const;
+
 
 
 };
