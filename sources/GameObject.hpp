@@ -78,5 +78,29 @@ public:
     void setAlive(bool alive);
 };
 
+class tank : GameObject {
+protected:
+
+    int health;
+
+public:
+    tank();
+
+    int getHealth();
+
+    void setHealth(int healthScore);
+};
+
+
+
+
+
+
+
+
+
+
+
+
 #endif //TANCHIKI_GAMEOBJECT_HPP
 

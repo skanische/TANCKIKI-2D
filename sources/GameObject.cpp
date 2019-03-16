@@ -61,3 +61,4 @@ const sf::Texture &GameObject::getTexture() const {
 void GameObject::setAlive(bool alive) {
     GameObject::alive = alive;
 }
+
