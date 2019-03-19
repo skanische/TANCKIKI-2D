@@ -5,12 +5,12 @@
 #include "GameManager.hpp"
 #include <SFML/Graphics.hpp>
 
-GameManager::GameManager(sf::RenderWindow* mainWindow):
-mainWindow(mainWindow),
-event(new sf::Event)
+GameManager::GameManager(sf::RenderWindow* the_mainWindow)
 {
     ///@todo проверить наличие файла player_info.json
     state = GAME_STATE_ENTER_NAME;
+    event = new sf::Event;
+    mainWindow = the_mainWindow;
 
     interfaceManager = new InterfaceManager(mainWindow, nullptr, &state);
     eventManager = new EventManager(mainWindow, event);
@@ -19,7 +19,7 @@ event(new sf::Event)
 void GameManager::runGame() {
     while (mainWindow->isOpen()) {
         interfaceManager->makeInterface();
-        eventManager->pollEvent();
+        handleEvent();
 
         switch (state) {
             case GAME_STATE_CREATE_MATCH: {
@@ -46,5 +46,18 @@ void GameManager::runGame() {
 }
 
 void GameManager::handleEvent() {
-    ///@todo обработать event.
+    ///@todo дописать этот метод
+    if (eventManager->pollEvent()) {
+        switch (event->type) {
+            case sf::Event::Closed: {
+                mainWindow->close();
+                break;
+            }
+            default: {
+                break;
+            }
+        }
+    }
+
+
 }

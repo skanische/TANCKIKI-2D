@@ -17,7 +17,7 @@ private:
 
 public:
     EventManager(sf::RenderWindow *mainWindow, sf::Event *event);
-    void pollEvent();
+    bool pollEvent();
     std::string getMessageFromGameObjects();
 
 };

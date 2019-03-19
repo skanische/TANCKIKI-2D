@@ -4,14 +4,14 @@
 
 #include "EventManager.hpp"
 
-void EventManager::pollEvent() {
-//    mainWindow->pollEvent(*event);
+bool EventManager::pollEvent() {
+    return mainWindow->pollEvent(*event);
 }
 
-EventManager::EventManager(sf::RenderWindow *mainWindow, sf::Event *event)
+EventManager::EventManager(sf::RenderWindow *the_mainWindow, sf::Event *the_event)
 {
-    mainWindow = mainWindow;
-    event = event;
+    mainWindow = the_mainWindow;
+    event = the_event;
 }
 
 std::string EventManager::getMessageFromGameObjects() {

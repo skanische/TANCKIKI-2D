@@ -6,11 +6,11 @@
 #include "InterfaceManager.hpp"
 
 
-InterfaceManager::InterfaceManager(sf::RenderWindow *mainWindow, ObjectManager *objectManager, gameState_t *state) :
+InterfaceManager::InterfaceManager(sf::RenderWindow *the_mainWindow, ObjectManager *objectManager, gameState_t *state) :
 objectManager(objectManager),
 state(state)
 {
-    mainWindow = mainWindow;
+    mainWindow = the_mainWindow;
 }
 
 void InterfaceManager::makeInterface() {

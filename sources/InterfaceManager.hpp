@@ -16,7 +16,7 @@
  */
 class InterfaceManager
 {
-    sf::RenderWindow mainWindow;
+    sf::RenderWindow* mainWindow;
     gameState_t* state;
     std::string errString;
     ObjectManager* objectManager;
