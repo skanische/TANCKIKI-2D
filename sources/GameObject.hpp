@@ -27,6 +27,8 @@ protected:
     double x, y;            /// координаты объекта на экране
     sf::Sprite sprite;
     sf::Texture texture;
+    int gameObjectId;
+    int ownerId;
 
 
 public:

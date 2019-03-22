@@ -19,3 +19,8 @@ void ObjectManager::addGameObject(GameObject *obj) {
 void ObjectManager::removeGameObject(GameObject *obj) {
 
 }
+
+GameObject *ObjectManager::getGameObjectById(int gameObjectId) {
+    ///@todo реализовать
+    return nullptr;
+}

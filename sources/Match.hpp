@@ -15,12 +15,9 @@ private:
     ObjectManager* objectManager;
     GraphicsManager* graphicsManager;
     PhysicsManager* physicsManager;
-
     std::string mapName;
-public:
-    const std::string &getMapName() const;
+    int myPlayerId;
 
-private:
     unsigned int amount_of_blocks_x, amount_of_blocks_y;
     block_t* blocks;
 
@@ -33,6 +30,7 @@ public:
     void drawMatch();
     void updateMatch();
     void processMessage(std::string message);
+    const std::string &getMapName() const;
 };
 
 

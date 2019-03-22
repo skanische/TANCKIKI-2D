@@ -30,6 +30,8 @@ Match::Match(sf::RenderWindow *mainWindow, std::string players_info_json, std::s
 
     ///@todo создать amount_of_players танков
     ///@todo передать все эти танки в objectManager, вызывая у него addGameObject
+
+    ///@todo узнать свой player_id (подумать, кто будет назначать player_id)
 }
 
 void Match::drawMatch() {
@@ -48,3 +50,5 @@ void Match::processMessage(std::string message) {
     ///@todo распарсить message
     ///@todo обработать message
 }
+
+
