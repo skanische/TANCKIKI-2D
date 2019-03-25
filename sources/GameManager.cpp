@@ -35,7 +35,7 @@ void GameManager::runGame() {
             case GAME_STATE_MATCH_PAUSE:
             case GAME_STATE_MATCH: {
                 std::string message = eventManager->getMessageFromGameObjects();
-                match->processMessage(message);
+                if (message.size()) match->processMessage(message);
                 match->updateMatch();
                 match->drawMatch();
                 break;

@@ -3,8 +3,12 @@
 //
 
 #include <string>
+#include <iostream>
 #include "Match.hpp"
 #include "blocks.hpp"
+#include "json/json.hpp"
+using json = nlohmann::json;
+
 
 Match::Match(sf::RenderWindow *mainWindow, std::string players_info_json, std::string map_json) {
     ///@todo распарсить map_json
@@ -48,6 +52,12 @@ const std::string &Match::getMapName() const {
 
 void Match::processMessage(std::string message) {
     ///@todo распарсить message
+    json j = json::parse(message.c_str());
+    std::cout << j["status"] << std::endl;
+    std::cout << j["from"] << std::endl;
+    std::cout << j["method"] << std::endl;
+    std::cout << j["params"] << std::endl;
+
     ///@todo обработать message
 }
 

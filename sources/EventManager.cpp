@@ -27,7 +27,7 @@ std::string EventManager::getMessageFromGameObjects() {
     {
         switch (*state) {
             case GAME_STATE_MATCH: {
-                returnMessageFromMatchActions();
+                return returnMessageFromMatchActions();
                 break;
             }
             case GAME_STATE_MATCH_PAUSE: {
@@ -96,6 +96,7 @@ std::string EventManager::returnMessageFromMatchActions() {
                 case sf::Keyboard::Escape: {
                     *state = GAME_STATE_MATCH_PAUSE;
                     std::cout << "Game state is MATCH_PAUSE\n";
+                    ///@todo return json message with paused state
                     break;
                 }
                 case sf::Keyboard::Space: {
@@ -121,7 +122,6 @@ std::string EventManager::returnMessageFromMatchActions() {
         default:
             break;
     }
-
     return std::string();
 }
 
@@ -130,6 +130,7 @@ void EventManager::handleMatchPauseActions() {
     {
         case sf::Event::Closed: {
             mainWindow->close();
+            ///@todo return json message about closing
             break;
         }
         case sf::Event::KeyPressed: {
