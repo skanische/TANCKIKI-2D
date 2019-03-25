@@ -14,9 +14,10 @@ private:
     sf::RenderWindow* mainWindow;
     gameState_t* state;
     sf::Event* event;
+    int playerId;
 
 public:
-    EventManager(sf::RenderWindow *mainWindow, sf::Event *event);
+    EventManager(sf::RenderWindow *theMainWindow, sf::Event *the_event, int playerId);
     bool pollEvent();
     std::string getMessageFromGameObjects();
 

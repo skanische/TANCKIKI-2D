@@ -14,13 +14,13 @@ GameManager::GameManager(sf::RenderWindow* the_mainWindow)
     mainWindow = the_mainWindow;
 
     interfaceManager = new InterfaceManager(mainWindow, nullptr, &state);
-    eventManager = new EventManager(mainWindow, event);
+    eventManager = new EventManager(mainWindow, event, -1);
 }
 
 void GameManager::runGame() {
     while (mainWindow->isOpen()) {
         interfaceManager->makeInterface();
-        handleEvent();
+        if (state != GAME_STATE_MATCH && state != GAME_STATE_MATCH_PAUSE) handleEvent();
         mainWindow->display();
         mainWindow->clear();
         switch (state) {
@@ -54,6 +54,19 @@ void GameManager::handleEvent() {
             case sf::Event::Closed: {
                 mainWindow->close();
                 break;
+            }
+            case sf::Event::KeyPressed: {
+                switch (event->key.code) {
+                    case sf::Keyboard::Escape: {
+                        mainWindow->close();
+                        std::cout << "Window closed by Escape\n";
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
+                }
             }
             default: {
                 break;
