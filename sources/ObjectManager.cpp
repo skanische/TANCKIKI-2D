@@ -16,8 +16,8 @@ void ObjectManager::addGameObject(GameObject *obj) {
     objects.push_back(obj);
 }
 
-void ObjectManager::removeGameObject(GameObject *obj) {
-
+void ObjectManager::removeGameObjectById(int gameObjectId) {
+    objects.erase(objects.begin()+gameObjectId);
 }
 
 GameObject* ObjectManager::getGameObjectById(int gameObjectId) {

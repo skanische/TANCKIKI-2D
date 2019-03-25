@@ -27,9 +27,8 @@ public:
     ObjectManager(sf::RenderWindow* window);
 
     void addGameObject(GameObject* obj);
-    void removeGameObject(GameObject* obj);
+    void removeGameObjectById(int gameObjectId);
     GameObject* getGameObjectById(int gameObjectId);
-    /// \todo Доступ к объектам (геттер игрового объекта)
     const sf::RenderWindow &getMainWindow() const;
 
 
