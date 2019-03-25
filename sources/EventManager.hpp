@@ -21,8 +21,8 @@ public:
     bool pollEvent();
     std::string getMessageFromGameObjects();
 
-    std::string matchActions();
-    void MatchPauseActions();
+    std::string returnMessageFromMatchActions();
+    void handleMatchPauseActions();
 
 };
 

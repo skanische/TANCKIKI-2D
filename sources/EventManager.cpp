@@ -27,11 +27,11 @@ std::string EventManager::getMessageFromGameObjects() {
     {
         switch (*state) {
             case GAME_STATE_MATCH: {
-                matchActions();
+                returnMessageFromMatchActions();
                 break;
             }
             case GAME_STATE_MATCH_PAUSE: {
-                MatchPauseActions();
+                handleMatchPauseActions();
                 break;
             }
             default:
@@ -43,10 +43,11 @@ std::string EventManager::getMessageFromGameObjects() {
     return std::string();
 }
 
-std::string EventManager::matchActions() {
+std::string EventManager::returnMessageFromMatchActions() {
     switch (event->type) {
         case sf::Event::Closed: {
             mainWindow->close();
+            ///@todo return json message about closing
             break;
         }
         case sf::Event::KeyPressed:
@@ -124,7 +125,7 @@ std::string EventManager::matchActions() {
     return std::string();
 }
 
-void EventManager::MatchPauseActions() {
+void EventManager::handleMatchPauseActions() {
     switch (event->type)
     {
         case sf::Event::Closed: {
