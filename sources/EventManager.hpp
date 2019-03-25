@@ -17,9 +17,12 @@ private:
     int playerId;
 
 public:
-    EventManager(sf::RenderWindow *theMainWindow, sf::Event *the_event, int playerId);
+    EventManager(sf::RenderWindow *theMainWindow, sf::Event *the_event, int playerId, gameState_t *the_state);
     bool pollEvent();
     std::string getMessageFromGameObjects();
+
+    std::string matchActions();
+    void MatchPauseActions();
 
 };
 

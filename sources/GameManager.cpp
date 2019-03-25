@@ -14,7 +14,7 @@ GameManager::GameManager(sf::RenderWindow* the_mainWindow)
     mainWindow = the_mainWindow;
 
     interfaceManager = new InterfaceManager(mainWindow, nullptr, &state);
-    eventManager = new EventManager(mainWindow, event, -1);
+    eventManager = new EventManager(mainWindow, event, -1, &state);
 }
 
 void GameManager::runGame() {
@@ -32,6 +32,7 @@ void GameManager::runGame() {
                 state = GAME_STATE_MATCH;
                 break;
             }
+            case GAME_STATE_MATCH_PAUSE:
             case GAME_STATE_MATCH: {
                 std::string message = eventManager->getMessageFromGameObjects();
                 match->processMessage(message);
