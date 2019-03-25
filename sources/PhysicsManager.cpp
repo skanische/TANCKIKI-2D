@@ -5,9 +5,11 @@
 #include "PhysicsManager.hpp"
 
 PhysicsManager::PhysicsManager(ObjectManager *theObjectManager) {
-
+    objectManager = theObjectManager;
 }
 
 void PhysicsManager::updateGameObjects() {
-
+    for (const auto &object : objectManager->getObjects()) {
+        object->update();
+    }
 }

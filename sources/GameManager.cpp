@@ -4,11 +4,12 @@
 
 #include "GameManager.hpp"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 GameManager::GameManager(sf::RenderWindow* the_mainWindow)
 {
     ///@todo проверить наличие файла player_info.json
-    state = GAME_STATE_ENTER_NAME;
+    state = GAME_STATE_CREATE_MATCH;
     event = new sf::Event;
     mainWindow = the_mainWindow;
 
@@ -20,13 +21,14 @@ void GameManager::runGame() {
     while (mainWindow->isOpen()) {
         interfaceManager->makeInterface();
         handleEvent();
-
+        mainWindow->display();
+        mainWindow->clear();
         switch (state) {
             case GAME_STATE_CREATE_MATCH: {
                 std::string players_info_json, map_json;
+                ///@todo прочитать players_info_json, map_json;
                 match = new Match(mainWindow, players_info_json, map_json);
                 interfaceManager->setMapName(match->getMapName());
-
                 state = GAME_STATE_MATCH;
                 break;
             }
@@ -35,13 +37,13 @@ void GameManager::runGame() {
                 match->processMessage(message);
                 match->updateMatch();
                 match->drawMatch();
+                break;
             }
             default: {
                 break;
             }
         }
-        mainWindow->clear();
-        mainWindow->display();
+
     }
 }
 

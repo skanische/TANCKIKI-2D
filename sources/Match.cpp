@@ -16,7 +16,7 @@ Match::Match(sf::RenderWindow *mainWindow, std::string players_info_json, std::s
 
 
     objectManager = new ObjectManager(mainWindow);
-    graphicsManager = new GraphicsManager(objectManager, blocks, amount_of_blocks_y, amount_of_blocks_x);
+    graphicsManager = new GraphicsManager(objectManager, blocks, amount_of_blocks_y, amount_of_blocks_x, mainWindow);
     physicsManager = new PhysicsManager(objectManager);
 
     ///@todo распарсить players_info_json

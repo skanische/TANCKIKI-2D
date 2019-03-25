@@ -46,9 +46,14 @@ void InterfaceManager::makeInterface() {
             drawMatchPauseWindow();
             break;
         }
+        case GAME_STATE_CREATE_MATCH:
+        {
+            break;
+        }
         default:
         {
-            std::cout << "Interface manager unknown error at interface switch-case";
+            std::cout << "Interface manager unknown error at interface switch-case: " << *state << "\n";
+            break;
         }
     }
 }

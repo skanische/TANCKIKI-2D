@@ -10,12 +10,13 @@
 #include "ObjectManager.hpp"
 #include "gameStates.hpp"
 
-
 /*!
  * Этот класс отвечает за весь игровой интерфейс.
  */
+
 class InterfaceManager
 {
+private:
     sf::RenderWindow* mainWindow;
     gameState_t* state;
     std::string errString;
@@ -26,26 +27,19 @@ class InterfaceManager
 public:
     void setMapName(const std::string &mapName);
 
-
-public:
     InterfaceManager(sf::RenderWindow *mainWindow, ObjectManager *objectManager, gameState_t *state);
 
     void makeInterface();
 
     void drawMainMenu();
-    void handleMainMenuKeyBoard();
 
     void drawEnterNameScreen();
-    void handleEnterNameScreenKeyboard();
 
     void drawChooseMapScreen();
-    void handleChooseMapScreenKeyboard();
 
     void drawMatchInterface();
-    void handleMatchKeyboard();
 
     void drawMatchPauseWindow();
-    void handleMatchPauseKeyboard();
 
     void drawErrorScreen();
 };

@@ -5,7 +5,7 @@
 #include "ObjectManager.hpp"
 
 ObjectManager::ObjectManager(sf::RenderWindow *window) {
-
+    objects = std::vector <GameObject* > ();
 }
 
 const sf::RenderWindow &ObjectManager::getMainWindow() const {
@@ -13,14 +13,18 @@ const sf::RenderWindow &ObjectManager::getMainWindow() const {
 }
 
 void ObjectManager::addGameObject(GameObject *obj) {
-
+    objects.push_back(obj);
 }
 
 void ObjectManager::removeGameObject(GameObject *obj) {
 
 }
 
-GameObject *ObjectManager::getGameObjectById(int gameObjectId) {
+GameObject* ObjectManager::getGameObjectById(int gameObjectId) {
     ///@todo реализовать
-    return nullptr;
+    return objects[gameObjectId];
+}
+
+const std::vector<GameObject *> &ObjectManager::getObjects() const {
+    return objects;
 }

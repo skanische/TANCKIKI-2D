@@ -14,10 +14,6 @@ GameObject::GameObject(double x, double y) {
     std::cout << "GameObject (" << x << ", " << y << ") created.\n";
 }
 
-void GameObject::draw() {
-
-}
-
 void GameObject::update() {
 
 }
@@ -60,4 +56,8 @@ const sf::Texture &GameObject::getTexture() const {
 
 void GameObject::setAlive(bool alive) {
     GameObject::alive = alive;
+}
+
+void GameObject::draw(sf::RenderWindow *window) {
+
 }
