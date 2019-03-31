@@ -18,6 +18,8 @@ public:
 
     bool collideCheck(GameObject* obj) override;
 
+    void collideResponse(GameObject* obj) override;
+
     Tank();
 
     int getHealth();

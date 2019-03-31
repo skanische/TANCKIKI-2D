@@ -40,11 +40,18 @@ Match::Match(sf::RenderWindow *mainWindow, std::string players_info_json, std::s
 
     ///@todo узнать свой player_id (подумать, кто будет назначать player_id)
 
+    Tank *tank2 = new Tank();
+    tank2->setTexture("images/tanks_16.png");
+    tank2->setSprite(96,48,16,16);  //задает вид спрайта на основе уже имеющейся тестуры
+    tank2->setPosition(100, 100);
+    tank2->setSizeObj(50, 50);
+    objectManager->addGameObject(tank2);
+
     Tank *tank1 = new Tank();
     tank1->setTexture("images/tanks_16.png");
     tank1->setSprite(96,48,16,16);  //задает вид спрайта на основе уже имеющейся тестуры
     tank1->setPosition(200, 200);
-    tank1->setSize(50, 50);
+    tank1->setSizeObj(50, 50);
     objectManager->addGameObject(tank1);
 }
 
