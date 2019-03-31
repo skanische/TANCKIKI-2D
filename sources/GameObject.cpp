@@ -19,11 +19,11 @@ void GameObject::update() {
 }
 
 void GameObject::setRotation(int angle){
-    GameObject::sprite.setRotation(-1*angle);
+    GameObject::sprite.setRotation(-angle);
 }
 
 float GameObject::getRotation() const{
-    return sprite.getRotation();
+    return -sprite.getRotation();
 }
 
 float GameObject::getSizeX() const {
@@ -118,4 +118,8 @@ void GameObject::draw(sf::RenderWindow *window) {
 
 float GameObject::getSpeed() const {
     return speed;
+}
+
+gameObject_t GameObject::getType() const {
+    return type;
 }

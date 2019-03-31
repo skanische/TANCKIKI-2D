@@ -32,7 +32,10 @@ protected:
     sf::Texture texture;
     int gameObjectId;       ///айди объекта
     int ownerId;            ///айди владельца
-    gameObject_t type;      /// тип
+    gameObject_t type;
+public:
+    gameObject_t getType() const;
+    /// тип
 
 public:
 
