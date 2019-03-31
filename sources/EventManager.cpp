@@ -67,7 +67,7 @@ std::string EventManager::returnMessageFromMatchActions() {
                     json_message["from"] = playerId;
                     json_message["method"] = "moveLeft";
                     json_message["params"] = json::array();
-                    std::cout << json_message.dump();
+//                    std::cout << json_message.dump();
                     return json_message.dump();
                 }
                 case sf::Keyboard::Right:
@@ -77,7 +77,7 @@ std::string EventManager::returnMessageFromMatchActions() {
                     json_message["from"] = playerId;
                     json_message["method"] = "moveRight";
                     json_message["params"] = json::array();
-                    std::cout << json_message.dump();
+//                    std::cout << json_message.dump();
                     return json_message.dump();
                 }
                 case sf::Keyboard::Up:
@@ -87,7 +87,7 @@ std::string EventManager::returnMessageFromMatchActions() {
                     json_message["from"] = playerId;
                     json_message["method"] = "moveUp";
                     json_message["params"] = json::array();
-                    std::cout << json_message.dump();
+//                    std::cout << json_message.dump();
                     return json_message.dump();
                 }
                 case sf::Keyboard::Down:
@@ -97,12 +97,12 @@ std::string EventManager::returnMessageFromMatchActions() {
                     json_message["from"] = playerId;
                     json_message["method"] = "moveDown";
                     json_message["params"] = json::array();
-                    std::cout << json_message.dump();
+//                    std::cout << json_message.dump();
                     return json_message.dump();
                 }
                 case sf::Keyboard::Escape: {
                     *state = GAME_STATE_MATCH_PAUSE;
-                    std::cout << "Game state is MATCH_PAUSE\n";
+//                    std::cout << "Game state is MATCH_PAUSE\n";
                     ///@todo return json message with paused state
                     break;
                 }
@@ -112,11 +112,11 @@ std::string EventManager::returnMessageFromMatchActions() {
                     json_message["from"] = playerId;
                     json_message["method"] = "shoot";
                     json_message["params"] = json::array({});
-                    std::cout << json_message.dump() << std::endl;
+//                    std::cout << json_message.dump() << std::endl;
                     return json_message.dump();
                 }
                 default: {
-                    std::cout << "You pressed " << event->key.code << std::endl;
+//                    std::cout << "You pressed " << event->key.code << std::endl;
                     break;
                 }
             }
@@ -144,7 +144,7 @@ void EventManager::handleMatchPauseActions() {
             switch (event->key.code) {
                 case sf::Keyboard::Escape: {
                     *state = GAME_STATE_MATCH;
-                    std::cout << "Game state is MATCH\n";
+//                    std::cout << "Game state is MATCH\n";
                     break;
                 }
                 default:
