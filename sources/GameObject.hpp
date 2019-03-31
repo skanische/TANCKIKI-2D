@@ -35,7 +35,6 @@ protected:
     gameObject_t type;      /// тип
 
 
-
 public:
 
     GameObject();
@@ -109,18 +108,6 @@ public:
 
     void multSize(float k);
 };
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif //TANCHIKI_GAMEOBJECT_HPP
 

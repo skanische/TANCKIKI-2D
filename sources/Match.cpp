@@ -40,7 +40,6 @@ Match::Match(sf::RenderWindow *mainWindow, std::string players_info_json, std::s
     tank1->setSprite(96,48,16,16);  //задает вид спрайта на основе уже имеющейся тестуры
     tank1->setPosition(200,200);
     objectManager->addGameObject(tank1);
-
 }
 
 void Match::drawMatch() {

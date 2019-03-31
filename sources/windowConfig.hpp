@@ -11,5 +11,4 @@ const unsigned int WINDOW_WIDTH = 640;
 const char WINDOW_NAME[] = "TANCHIKI GAME";
 const float TIME = 0.1;
 
-
 #endif //TANCHIKI_CONFIG_HPP

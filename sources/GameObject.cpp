@@ -130,9 +130,11 @@ float GameObject::getSpeed() const {
     return speed;
 }
 
+
 void GameObject::multSize(float k){
     GameObject::sizeX=k*sizeX;
     GameObject::sizeY=k*sizeY;
     GameObject::sprite.setScale(k*sprite.getScale().x, k*sprite.getScale().y);
 }
+
 
