@@ -34,6 +34,8 @@ protected:
     int ownerId;            ///айди владельца
     gameObject_t type;      /// тип
 
+
+
 public:
 
     GameObject();
@@ -93,7 +95,9 @@ public:
 
     void setSpeed(float v);
 
-    void setSize(float sizeX, float sizeY);
+    void setSizeObj(float sizeX, float sizeY);
+
+    void setSizeSprite(float sizeX, float sizeY);
 
     void setAlive(bool alive);
 
@@ -102,6 +106,8 @@ public:
 
     void setTexture(sf::Texture texture_);
     void setTexture(const char* address);
+
+    void multSize(float k);
 };
 
 

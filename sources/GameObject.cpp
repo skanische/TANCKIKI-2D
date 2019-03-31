@@ -5,7 +5,14 @@
 #include "GameObject.hpp"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <cmath>
 
+class Point
+{
+public:
+    float x;
+    float y;
+};
 
 GameObject::GameObject() {
     GameObject::sizeX=1;
@@ -34,10 +41,13 @@ float GameObject::getSizeY() const {
     return sizeY;
 }
 
-void GameObject::setSize(float sizeX, float sizeY) {
-    GameObject::sprite.setScale(sizeX/GameObject::sizeX, sizeY/GameObject::sizeY);
-    GameObject::sizeX=sizeX;
-    GameObject::sizeY=sizeY;
+void GameObject::setSizeObj(float sizeX_, float sizeY_) {
+    GameObject::sizeX=sizeX_;
+    GameObject::sizeY=sizeY_;
+}
+
+void GameObject::setSizeSprite(float sizeX_, float sizeY_) {
+    GameObject::sprite.setScale(sizeX_/GameObject::sizeX, sizeY_/GameObject::sizeY);
 }
 
 GameObject::~GameObject() {
@@ -89,12 +99,12 @@ void GameObject::setSprite(sf::Sprite sprite_){
     GameObject::sprite.setOrigin(sizeX/2,sizeY/2);
 }
 
-void GameObject::setSprite(int X, int Y, int sizeX, int sizeY){
-    GameObject::sizeX=sizeX;
-    GameObject::sizeY=sizeY;
+void GameObject::setSprite(int X, int Y, int sizeX_, int sizeY_){
+    GameObject::sizeX=sizeX_;
+    GameObject::sizeY=sizeY_;
     GameObject::sprite.setTexture(GameObject::texture);
-    GameObject::sprite.setTextureRect(sf::IntRect(X,Y,sizeX,sizeY));
-    GameObject::sprite.setOrigin(sizeX/2,sizeY/2);
+    GameObject::sprite.setTextureRect(sf::IntRect(X,Y,sizeX_,sizeY_));
+    GameObject::sprite.setOrigin(sizeX_/2,sizeY_/2);
 }
 
 void GameObject::setTexture(sf::Texture texture_){
@@ -119,3 +129,10 @@ void GameObject::draw(sf::RenderWindow *window) {
 float GameObject::getSpeed() const {
     return speed;
 }
+
+void GameObject::multSize(float k){
+    GameObject::sizeX=k*sizeX;
+    GameObject::sizeY=k*sizeY;
+    GameObject::sprite.setScale(k*sprite.getScale().x, k*sprite.getScale().y);
+}
+

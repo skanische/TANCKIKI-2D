@@ -7,6 +7,7 @@
 #include "blocks.hpp"
 #include "Tank.hpp"
 
+
 Match::Match(sf::RenderWindow *mainWindow, std::string players_info_json, std::string map_json) {
     ///@todo распарсить map_json
     mapName = "MAP_NAME";
@@ -33,10 +34,13 @@ Match::Match(sf::RenderWindow *mainWindow, std::string players_info_json, std::s
     ///@todo передать все эти танки в objectManager, вызывая у него addGameObject
 
     ///@todo узнать свой player_id (подумать, кто будет назначать player_id)
+
     Tank *tank1 = new Tank();
     tank1->setTexture("C:/Users/Apxapa/Documents/Github/TANCKIKI-2D-/images/tanks_16.png");
     tank1->setSprite(96,48,16,16);  //задает вид спрайта на основе уже имеющейся тестуры
+    tank1->setPosition(200,200);
     objectManager->addGameObject(tank1);
+
 }
 
 void Match::drawMatch() {
