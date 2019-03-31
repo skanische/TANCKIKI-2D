@@ -6,19 +6,37 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+
 GameObject::GameObject() {
+    GameObject::sizeX=1;
+    GameObject::sizeY=1;
+    GameObject::speed=0;
     std::cout << "GameObject created.\n";
 }
 
-}
+void GameObject::update() {
 
 }
 
+void GameObject::setRotation(int angle){
+    GameObject::sprite.setRotation(-1*angle);
 }
 
+float GameObject::getRotation() const{
+    return sprite.getRotation();
 }
 
+float GameObject::getSizeX() const {
+    return sizeX;
+}
 
+float GameObject::getSizeY() const {
+    return sizeY;
+}
+
+void GameObject::setSize(float sizeX, float sizeY) {
+    GameObject::sprite.setScale(sizeX/GameObject::sizeX, sizeY/GameObject::sizeY);
+    GameObject::sizeX=sizeX;
     GameObject::sizeY=sizeY;
 }
 
@@ -34,12 +52,10 @@ void GameObject::collideResponse(GameObject *obj) {
 
 }
 
-double GameObject::getX() const {
 float GameObject::getX() const {
     return x;
 }
 
-double GameObject::getY() const {
 float GameObject::getY() const {
     return y;
 }
@@ -68,8 +84,10 @@ void GameObject::setPosition(float X, float Y){
 }
 
 
+void GameObject::setSprite(sf::Sprite sprite_){
     GameObject::sprite=sprite_;
-    GameObject::sprite.setOrigin(x+sizeX/2,y+sizeY/2);
+    GameObject::sprite.setOrigin(sizeX/2,sizeY/2);
+}
 
 void GameObject::setSprite(int X, int Y, int sizeX, int sizeY){
     GameObject::sizeX=sizeX;
@@ -82,6 +100,9 @@ void GameObject::setSprite(int X, int Y, int sizeX, int sizeY){
 void GameObject::setTexture(sf::Texture texture_){
     GameObject::texture=texture_;
 }
+
+void GameObject::setTexture(const char* address) {
+    sf::Image image;
     image.loadFromFile(address);
     GameObject::texture.loadFromImage(image);
 }
