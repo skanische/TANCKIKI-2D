@@ -16,6 +16,8 @@ public:
 
     void draw(sf::RenderWindow* window) override;
 
+    bool collideCheck(GameObject* obj) override;
+
     Tank();
 
     int getHealth();
