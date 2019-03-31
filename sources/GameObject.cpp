@@ -1,3 +1,5 @@
+#include <utility>
+
 //
 // Created by Кежик Кызыл-оол on 2019-02-26.
 //
@@ -17,7 +19,8 @@ public:
 GameObject::GameObject() {
     GameObject::sizeX=1;
     GameObject::sizeY=1;
-    GameObject::speed=0;
+    GameObject::speedX=0;
+    GameObject::speedY=0;
     std::cout << "GameObject created.\n";
 }
 
@@ -27,6 +30,8 @@ void GameObject::update() {
 
 void GameObject::setRotation(int angle){
     GameObject::sprite.setRotation(-angle);
+    cos = cosf((float)angle / 2 / M_PI));
+    sin = sinf((float)angle / 2 / M_PI));
 }
 
 float GameObject::getRotation() const{
@@ -44,6 +49,7 @@ float GameObject::getSizeY() const {
 void GameObject::setSizeObj(float sizeX_, float sizeY_) {
     GameObject::sizeX=sizeX_;
     GameObject::sizeY=sizeY_;
+    d=sqrtf(powf(sizeX_/2,2)+powf(sizeY_/2,2));
 }
 
 void GameObject::setSizeSprite(float sizeX_, float sizeY_) {
@@ -54,11 +60,11 @@ GameObject::~GameObject() {
 
 }
 
-bool GameObject::collideCheck(GameObject *obj) {
+int GameObject::collideCheck(GameObject *obj) {
     return false;
 }
 
-void GameObject::collideResponse(GameObject *obj) {
+void GameObject::collideResponse(int P, GameObject *obj) {
 
 }
 
@@ -95,8 +101,7 @@ void GameObject::setPosition(float X, float Y){
 
 
 void GameObject::setSprite(sf::Sprite sprite_){
-    GameObject::sprite=sprite_;
-    GameObject::sprite.setOrigin(sizeX/2,sizeY/2);
+
 }
 
 void GameObject::setSprite(int X, int Y, int sizeX_, int sizeY_){
@@ -118,24 +123,42 @@ void GameObject::setTexture(const char* address) {
 }
 
 
-void GameObject::setSpeed(float v) {
-    GameObject::speed = v;
+void GameObject::setSpeed(float spX, float spY) {
+    GameObject::speedX = spX;
+    GameObject::speedY = spY;
 }
 
 void GameObject::draw(sf::RenderWindow *window) {
 
 }
 
-float GameObject::getSpeed() const {
-    return speed;
+float GameObject::getSpeedX() const {
+    return speedX;
+}
+
+float GameObject::getSpeedY() const {
+    return speedY;
 }
 
 void GameObject::multSize(float k){
     GameObject::sizeX=k*sizeX;
     GameObject::sizeY=k*sizeY;
     GameObject::sprite.setScale(k*sprite.getScale().x, k*sprite.getScale().y);
+    d=k*d;
 }
 
 gameObject_t GameObject::getType() const {
     return type;
+}
+
+float GameObject::getDiam() const {
+    return d;
+}
+
+float GameObject::getSin() const{
+    return sin;
+}
+
+float GameObject::getCos() const{
+    return cos;
 }

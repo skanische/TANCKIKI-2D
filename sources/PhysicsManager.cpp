@@ -2,6 +2,7 @@
 // Created by Кежик Кызыл-оол on 2019-02-26.
 //
 
+#include <iostream>
 #include "PhysicsManager.hpp"
 
 PhysicsManager::PhysicsManager(ObjectManager *theObjectManager) {
@@ -9,7 +10,12 @@ PhysicsManager::PhysicsManager(ObjectManager *theObjectManager) {
 }
 
 void PhysicsManager::updateGameObjects() {
-    for (const auto &object : objectManager->getObjects()) {
-        object->update();
+    for (const auto &object1 : objectManager->getObjects()) {
+        for (const auto &object2 : objectManager->getObjects()) {
+            if(object1!=object2 && object1->collideCheck(object2)) {
+                object1->collideResponse(object2);
+            }
+        }
+        object1->update();
     }
 }

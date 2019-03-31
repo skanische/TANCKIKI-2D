@@ -27,12 +27,16 @@ protected:
     bool alive;             /// жив ли ещё объект
     float x, y;            /// координаты объекта на экране (центр)
     float sizeX, sizeY;    /// размеры
-    float speed;           /// cкорость движения
+    float speedX, speedY;  /// cкорость движения
     sf::Sprite sprite;
     sf::Texture texture;
     int gameObjectId;       ///айди объекта
     int ownerId;            ///айди владельца
     gameObject_t type;
+    float rotation;
+    float d;               /// половина диагонали;
+    float sin;
+    float cos;
 public:
     gameObject_t getType() const;
     /// тип
@@ -63,7 +67,7 @@ public:
      * @param obj - указатель на игровой объект, взаимодействие с которым проверяется
      * @return true, если есть взаимодействие. В противном случае – false
      */
-    virtual bool collideCheck(GameObject* obj);
+    virtual int collideCheck(GameObject* obj);
 
     /*!
      * \brief
@@ -71,13 +75,19 @@ public:
      *
      * @param obj - указатель на игровой объект, с которым будет выполнен акт взаимодействия
      */
-    virtual void collideResponse(GameObject* obj);
+    virtual void collideResponse(int P, GameObject* obj);
 
     float getX() const;
 
     float getY() const;
 
-    float getSpeed() const;
+    float getSin() const;
+
+    float getCos() const;
+
+    float getSpeedX() const;
+
+    float getSpeedY() const;
 
     float getSizeX() const;
 
@@ -87,6 +97,8 @@ public:
 
     bool isAlive() const;
 
+    float getDiam() const;
+
     virtual const sf::Sprite &getSprite() const;
 
     virtual const sf::Texture &getTexture() const;
@@ -95,11 +107,11 @@ public:
 
     void setPosition(float x, float y);
 
-    void setSpeed(float v);
+    void setSpeed(float spX, float spY);
 
     void setSizeObj(float sizeX, float sizeY);
 
-    void setSizeSprite(float sizeX, float sizeY);
+    void setSizeSprite(float sizeX, float sizeY); ///задает размеры спрайта, если размеры спрайта и объекта совпадают!!!
 
     void setAlive(bool alive);
 
