@@ -104,17 +104,5 @@ public:
     void setTexture(const char* address);
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
 #endif //TANCHIKI_GAMEOBJECT_HPP
 

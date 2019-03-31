@@ -41,7 +41,6 @@ public:
      * либо выйти из неё.
      */
     void runGame();
-
     void handleEvent();
 };
 
