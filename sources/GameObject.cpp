@@ -26,11 +26,11 @@ void GameObject::update() {
 }
 
 void GameObject::setRotation(int angle){
-    GameObject::sprite.setRotation(-1*angle);
+    GameObject::sprite.setRotation(-angle);
 }
 
 float GameObject::getRotation() const{
-    return sprite.getRotation();
+    return -sprite.getRotation();
 }
 
 float GameObject::getSizeX() const {
@@ -130,11 +130,12 @@ float GameObject::getSpeed() const {
     return speed;
 }
 
-
 void GameObject::multSize(float k){
     GameObject::sizeX=k*sizeX;
     GameObject::sizeY=k*sizeY;
     GameObject::sprite.setScale(k*sprite.getScale().x, k*sprite.getScale().y);
 }
 
-
+gameObject_t GameObject::getType() const {
+    return type;
+}

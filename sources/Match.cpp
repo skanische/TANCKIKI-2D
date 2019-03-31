@@ -3,9 +3,14 @@
 //
 
 #include <string>
+#include <iostream>
 #include "Match.hpp"
 #include "blocks.hpp"
 #include "Tank.hpp"
+#include "json/json.hpp"
+#include "messages.hpp"
+
+using json = nlohmann::json;
 
 
 Match::Match(sf::RenderWindow *mainWindow, std::string players_info_json, std::string map_json) {
@@ -36,9 +41,10 @@ Match::Match(sf::RenderWindow *mainWindow, std::string players_info_json, std::s
     ///@todo узнать свой player_id (подумать, кто будет назначать player_id)
 
     Tank *tank1 = new Tank();
-    tank1->setTexture("C:/Users/Apxapa/Documents/Github/TANCKIKI-2D-/images/tanks_16.png");
+    tank1->setTexture("images/tanks_16.png");
     tank1->setSprite(96,48,16,16);  //задает вид спрайта на основе уже имеющейся тестуры
-    tank1->setPosition(200,200);
+    tank1->setPosition(200, 200);
+    tank1->setSize(50, 50);
     objectManager->addGameObject(tank1);
 }
 
@@ -54,8 +60,43 @@ const std::string &Match::getMapName() const {
     return mapName;
 }
 
+#define TANK_VELOCITY 1
 void Match::processMessage(std::string message) {
     ///@todo распарсить message
+    assert(message.size());
+    json j = json::parse(message.c_str());
+//    std::cout << j["status"] << std::endl;
+//    std::cout << j["from"] << std::endl;
+//    std::cout << j["method"] << std::endl;
+//    std::cout << j["params"] << std::endl;
+
+
+    switch (gameObjectMessageId[j["method"]]) {
+        case GAMEOBJECT_MESSAGE_MOVE_DOWN: {
+            objectManager->getGameObjectById(0)->setSpeed(TANK_VELOCITY);
+            objectManager->getGameObjectById(0)->setRotation(270);
+            break;
+        }
+        case GAMEOBJECT_MESSAGE_MOVE_LEFT: {
+            objectManager->getGameObjectById(0)->setSpeed(TANK_VELOCITY);
+            objectManager->getGameObjectById(0)->setRotation(180);
+            break;
+        }
+        case GAMEOBJECT_MESSAGE_MOVE_RIGHT: {
+            objectManager->getGameObjectById(0)->setSpeed(TANK_VELOCITY);
+            objectManager->getGameObjectById(0)->setRotation(0);
+            break;
+        }
+        case GAMEOBJECT_MESSAGE_MOVE_UP: {
+            objectManager->getGameObjectById(0)->setSpeed(TANK_VELOCITY);
+            objectManager->getGameObjectById(0)->setRotation(90);
+            break;
+        }
+        case GAMEOBJECT_MESSAGE_STOP: {
+            objectManager->getGameObjectById(0)->setSpeed(0);
+            break;
+        }
+    }
     ///@todo обработать message
 }
 

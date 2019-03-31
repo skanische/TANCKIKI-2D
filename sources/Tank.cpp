@@ -32,9 +32,9 @@ void Tank::update() {
     switch (angle)
     {
         case 0: dx = speed; dy = 0; break;
-        case 180: dx = -speed; dy = 0; break;
-        case 270: dx = 0; dy = speed; break;
-        case 90: dx = 0; dy = -speed; break;
+        case -180: dx = -speed; dy = 0; break;
+        case -90: dx = 0; dy = speed; break;
+        case -270: dx = 0; dy = -speed; break;
         default: dx = 0; dy = 0; break;
     }
 
