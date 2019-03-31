@@ -29,9 +29,6 @@ public:
      * \details Реализация довольно проста: необходимо вызвать у каждого игрового объекты метод update.
      */
     void updateGameObjects();
-    void checkKeyboard();
-
-
 };
 
 #endif //TANCHIKI_PHYSICSMANAGER_HPP

@@ -10,6 +10,9 @@
 #include "PhysicsManager.hpp"
 #include "GraphicsManager.hpp"
 #include "InterfaceManager.hpp"
+#include "Match.hpp"
+#include "gameStates.hpp"
+#include "EventManager.hpp"
 
 
 /*!
@@ -18,17 +21,17 @@
 class GameManager
 {
 private:
-    sf::RenderWindow* mainWindow;       /// окно для рисования
+    sf::RenderWindow* mainWindow;
+    Match* match;
+    InterfaceManager* interfaceManager;
+    EventManager* eventManager;
 
-    ObjectManager* objectManager;       /// менеджер объектов
-    PhysicsManager* physicsManager;     /// менеджер физики
-    GraphicsManager* graphicsManager;   /// менеджер графики
-    InterfaceManager* interfaceManager; /// менеджер игрового интерфейса
-
-    sf::Event mainEvent;                /// переменная событий
+    gameState_t state;
+    sf::Event* event;
+    std::string playerName;
 
 public:
-    GameManager(sf::RenderWindow* initMainWindow);
+    GameManager(sf::RenderWindow* mainWindow);
 
     /*!
      * \brief запуск игры
@@ -39,33 +42,7 @@ public:
      */
     void runGame();
 
-    /*!
-     * \brief Обработка событий с источников ввода (мышка, клавиатура).
-     *
-     */
-    void checkEvents();
-
-    /*!
-     * \brief Очищает экран.
-     */
-    void clearWindow();
-
-    /*!
-     * \brief Рисует все игровые объекты на экран.
-     */
-    void drawObjects();
-
-    /*!
-     * \brief Обновляет все игровые объекты.
-     */
-    void updateObjecst();
-
-    /*!
-     * \brief Закрывает игру.
-     *
-     * \details После вызова этого метода программа очищает память и закрывает окно с игрой.
-     */
-    void stopGame();
+    void handleEvent();
 };
 
 #endif //TANCHIKI_GAMEMANAGER_HPP

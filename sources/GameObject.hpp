@@ -6,6 +6,7 @@
 #define TANCHIKI_GAMEOBJECT_HPP
 
 #include <SFML/Graphics.hpp>
+#include "windowConfig.hpp"
 
 
 enum gameObject_t {
@@ -15,6 +16,7 @@ enum gameObject_t {
     GROUND
 };
 
+
 /*!
  *      \brief
  *      Родительский класс для всех игровых объектов
@@ -23,15 +25,19 @@ class GameObject
 {
 protected:
     bool alive;             /// жив ли ещё объект
-    gameObject_t type;      /// тип игрового объекта
-    double x, y;            /// координаты объекта на экране
+    float x, y;            /// координаты объекта на экране (центр)
+    float sizeX, sizeY;    /// размеры
+    float speed;           /// cкорость движения
     sf::Sprite sprite;
     sf::Texture texture;
-
+    int gameObjectId;       ///айди объекта
+    int ownerId;            ///айди владельца
+    gameObject_t type;      /// тип
 
 public:
+
     GameObject();
-    GameObject(double x, double y);
+
     virtual ~GameObject();
 
     /*!
@@ -39,7 +45,7 @@ public:
      *
      * Спрайт тупо рисуется на экране с координатами x, y.
      */
-    virtual void draw();
+    virtual void draw(sf::RenderWindow* window);
 
     /*!
      * \brief Обновляет игровой объект. У каждого игрового объекта своя реализация этого метода.
@@ -63,33 +69,41 @@ public:
      */
     virtual void collideResponse(GameObject* obj);
 
-    double getX() const;
+    float getX() const;
 
-    double getY() const;
+    float getY() const;
 
-    gameObject_t getType() const;
+    float getSpeed() const;
+
+    float getSizeX() const;
+
+    float getSizeY() const;
+
+    float getRotation() const;
 
     bool isAlive() const;
 
-    const sf::Sprite &getSprite() const;
+    virtual const sf::Sprite &getSprite() const;
 
-    const sf::Texture &getTexture() const;
+    virtual const sf::Texture &getTexture() const;
+
+    void setRotation(int angle);
+
+    void setPosition(float x, float y);
+
+    void setSpeed(float v);
+
+    void setSize(float sizeX, float sizeY);
 
     void setAlive(bool alive);
+
+    void setSprite(sf::Sprite sprite_);
+    void setSprite(int X, int Y, int sizeX, int sizeY);
+
+    void setTexture(sf::Texture texture_);
+    void setTexture(const char* address);
 };
 
-class tank : GameObject {
-protected:
-
-    int health;
-
-public:
-    tank();
-
-    int getHealth();
-
-    void setHealth(int healthScore);
-};
 
 
 

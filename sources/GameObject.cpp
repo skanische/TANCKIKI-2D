@@ -10,16 +10,16 @@ GameObject::GameObject() {
     std::cout << "GameObject created.\n";
 }
 
-GameObject::GameObject(double x, double y) {
-    std::cout << "GameObject (" << x << ", " << y << ") created.\n";
 }
-
-void GameObject::draw() {
 
 }
 
-void GameObject::update() {
+}
 
+}
+
+
+    GameObject::sizeY=sizeY;
 }
 
 GameObject::~GameObject() {
@@ -35,15 +35,13 @@ void GameObject::collideResponse(GameObject *obj) {
 }
 
 double GameObject::getX() const {
+float GameObject::getX() const {
     return x;
 }
 
 double GameObject::getY() const {
+float GameObject::getY() const {
     return y;
-}
-
-gameObject_t GameObject::getType() const {
-    return type;
 }
 
 bool GameObject::isAlive() const {
@@ -58,7 +56,45 @@ const sf::Texture &GameObject::getTexture() const {
     return texture;
 }
 
+
 void GameObject::setAlive(bool alive) {
     GameObject::alive = alive;
 }
 
+void GameObject::setPosition(float X, float Y){
+    GameObject::x=X;
+    GameObject::y=Y;
+    GameObject::sprite.setPosition(X,Y);
+}
+
+
+    GameObject::sprite=sprite_;
+    GameObject::sprite.setOrigin(x+sizeX/2,y+sizeY/2);
+
+void GameObject::setSprite(int X, int Y, int sizeX, int sizeY){
+    GameObject::sizeX=sizeX;
+    GameObject::sizeY=sizeY;
+    GameObject::sprite.setTexture(GameObject::texture);
+    GameObject::sprite.setTextureRect(sf::IntRect(X,Y,sizeX,sizeY));
+    GameObject::sprite.setOrigin(sizeX/2,sizeY/2);
+}
+
+void GameObject::setTexture(sf::Texture texture_){
+    GameObject::texture=texture_;
+}
+    image.loadFromFile(address);
+    GameObject::texture.loadFromImage(image);
+}
+
+
+void GameObject::setSpeed(float v) {
+    GameObject::speed = v;
+}
+
+void GameObject::draw(sf::RenderWindow *window) {
+
+}
+
+float GameObject::getSpeed() const {
+    return speed;
+}
